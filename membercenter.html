@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wepet 寵物資訊平台 - 會員系統</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/a076d05399.css">
+    <style>
+        body {
+            font-family: "Noto Sans TC", sans-serif;
+            background: linear-gradient(135deg, #f8f2e9 0%, #f5e6d3 100%);
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .navbar-light {
+            background-color: #f8f2e9 !important;
+        }
+
+        .navbar-light .navbar-brand {
+            font-weight: bold;
+            font-size: 1.6rem;
+            color: #4e4e4e;
+        }
+
+        .navbar-light .nav-link {
+            color: #4e4e4e;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-light .nav-link:hover {
+            color: #c48b5f;
+        }
+
+        .navbar-nav .btn {
+            background-color: #d19f72;
+            color: white;
+            border-radius: 20px;
+            border: none;
+            padding: 6px 14px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-nav .btn:hover {
+            background-color: #b9845e;
+        }
+
+        .auth-container {
+            max-width: 450px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .auth-header {
+            background: linear-gradient(135deg, #d19f72, #c48b5f);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .auth-header h2 {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .auth-header .subtitle {
+            margin-top: 0.5rem;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .auth-body {
+            padding: 2rem;
+        }
+
+        .form-group label {
+            color: #4e4e4e;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #d19f72;
+            box-shadow: 0 0 0 0.2rem rgba(209, 159, 114, 0.25);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d19f72, #c48b5f);
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #c48b5f, #b9845e);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline-secondary {
+            border: 2px solid #d19f72;
+            color: #d19f72;
+            border-radius: 10px;
+            padding: 0.75rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #d19f72;
+            border-color: #d19f72;
+            color: white;
+        }
+
+        .switch-form {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .switch-form a {
+            color: #d19f72;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .switch-form a:hover {
+            color: #c48b5f;
+            text-decoration: underline;
+        }
+
+        .social-login {
+            margin: 1.5rem 0;
+        }
+
+        .social-btn {
+            width: 100%;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+            padding: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-google {
+            background-color: #db4437;
+            border-color: #db4437;
+            color: white;
+        }
+
+        .btn-google:hover {
+            background-color: #c23321;
+            border-color: #c23321;
+            color: white;
+        }
+
+        .btn-facebook {
+            background-color: #3b5998;
+            border-color: #3b5998;
+            color: white;
+        }
+
+        .btn-facebook:hover {
+            background-color: #2d4373;
+            border-color: #2d4373;
+            color: white;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .divider:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e9ecef;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 1rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .pet-icon {
+            font-size: 3rem;
+            color: #d19f72;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            margin-right: 0.5rem;
+            transform: scale(1.2);
+        }
+
+        .checkbox-container label {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .form-row .col {
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-home {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: #d19f72;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #c48b5f;
+            text-decoration: none;
+        }
+
+        @media (max-width: 576px) {
+            .auth-container {
+                margin: 1rem;
+                max-width: none;
+            }
+
+            .auth-header {
+                padding: 1.5rem;
+            }
+
+            .auth-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-paw" style="color: #d19f72; margin-right: 8px;"></i>
+                寵物資訊平台
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">回首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showLogin()">會員登入</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-login ml-2" href="#" onclick="showRegister()">會員註冊</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 登入表單 -->
+        <div id="loginForm" class="auth-container fade-in">
+            <div class="auth-header">
+                <div class="pet-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2>會員登入</h2>
+                <p class="subtitle">歡迎回到 Wepet，讓我們一起幫助更多毛孩找到溫暖的家</p>
+            </div>
+            <div class="auth-body">
+                <form>
+                    <div class="form-group">
+                        <label for="loginEmail">
+                            <i class="fas fa-envelope"></i> 電子信箱
+                        </label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="請輸入您的電子信箱" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i> 密碼
+                        </label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="請輸入您的密碼" required>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">記住我的登入狀態</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> 立即登入
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>或使用以下方式登入</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="btn btn-google social-btn">
+                        <i class="fab fa-google"></i> 使用 Google 帳號登入
+                    </button>
+                    <button class="btn btn-facebook social-btn">
+                        <i class="fab fa-facebook-f"></i> 使用 Facebook 帳號登入
+                    </button>
+                </div>
+
+                <div class="switch-form">
+                    <p>還沒有帳號嗎？<a href="#" onclick="showRegister()">立即註冊</a></p>
+                    <p><a href="#" onclick="showForgotPassword()">忘記密碼？</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 註冊表單 -->
+        <div id="registerForm" class="auth-container hidden">
+            <div class="auth-header">
+                <div class="pet-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h2>會員註冊</h2>
+                <p class="subtitle">加入 Wepet 大家庭，一起為流浪動物盡一份心力</p>
+            </div>
+            <div class="auth-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="firstName">
+                                    <i class="fas fa-user"></i> 姓名
+                                </label>
+                                <input type="text" class="form-control" id="firstName" placeholder="姓名" required>
+                            </div>
+                        </div>
+                                            </div>
+                    <div class="form-group">
+                        <label for="registerEmail">
+                            <i class="fas fa-envelope"></i> 電子信箱
+                        </label>
+                        <input type="email" class="form-control" id="registerEmail" placeholder="請輸入您的電子信箱" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">
+                            <i class="fas fa-phone"></i> 手機號碼
+                        </label>
+                        <input type="tel" class="form-control" id="phone" placeholder="請輸入您的手機號碼" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">
+                            <i class="fas fa-lock"></i> 密碼
+                        </label>
+                        <input type="password" class="form-control" id="registerPassword" placeholder="請設定8位以上密碼" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">
+                            <i class="fas fa-lock"></i> 確認密碼
+                        </label>
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="請再次輸入密碼" required>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <label for="agreeTerms">我已閱讀並同意 <a href="#" style="color: #d19f72;">服務條款</a> 與 <a href="#" style="color: #d19f72;">隱私政策</a></label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="subscribeNewsletter">
+                        <label for="subscribeNewsletter">我願意收到 Wepet 的最新活動與領養資訊</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> 立即註冊
+                    </button>
+                </form>
+
+                <div class="switch-form">
+                    <p>已經有帳號了？<a href="#" onclick="showLogin()">立即登入</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 忘記密碼表單 -->
+        <div id="forgotPasswordForm" class="auth-container hidden">
+            <div class="auth-header">
+                <div class="pet-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h2>忘記密碼</h2>
+                <p class="subtitle">別擔心，我們會協助您重新設定密碼</p>
+            </div>
+            <div class="auth-body">
+                <form>
+                    <div class="form-group">
+                        <label for="resetEmail">
+                            <i class="fas fa-envelope"></i> 電子信箱
+                        </label>
+                        <input type="email" class="form-control" id="resetEmail" placeholder="請輸入註冊時使用的電子信箱" required>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #6c757d; margin-bottom: 1.5rem;">
+                        我們將發送重設密碼的連結到您的信箱
+                    </p>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> 發送重設連結
+                    </button>
+                </form>
+
+                <div class="switch-form">
+                    <p>想起密碼了？<a href="#" onclick="showLogin()">返回登入</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function hideAllForms() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('registerForm').classList.add('hidden');
+            document.getElementById('forgotPasswordForm').classList.add('hidden');
+        }
+
+        function showLogin() {
+            hideAllForms();
+            const form = document.getElementById('loginForm');
+            form.classList.remove('hidden');
+            form.classList.add('fade-in');
+        }
+
+        function showRegister() {
+            hideAllForms();
+            const form = document.getElementById('registerForm');
+            form.classList.remove('hidden');
+            form.classList.add('fade-in');
+        }
+
+        function showForgotPassword() {
+            hideAllForms();
+            const form = document.getElementById('forgotPasswordForm');
+            form.classList.remove('hidden');
+            form.classList.add('fade-in');
+        }
+
+        // 表單驗證
+        document.getElementById('registerForm').querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('密碼與確認密碼不相符，請重新輸入');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('密碼長度至少需要8個字符');
+                return;
+            }
+            
+            if (!document.getElementById('agreeTerms').checked) {
+                alert('請同意服務條款與隱私政策');
+                return;
+            }
+            
+            alert('註冊成功！歡迎加入 Wepet 大家庭');
+            showLogin();
+        });
+
+        // 登入表單提交
+        document.getElementById('loginForm').querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('登入成功！歡迎回到 Wepet');
+        });
+
+        // 忘記密碼表單提交
+        document.getElementById('forgotPasswordForm').querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('重設密碼連結已發送至您的信箱，請查收');
+            showLogin();
+        });
+
+        // 預設顯示登入表單
+        showLogin();
+    </script>
+</body>
+
+</html>

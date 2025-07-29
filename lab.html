@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>寵物救援系統</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #7C9B5A;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    header img {
+      width: 60px;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    nav {
+      background-color: #BFC49B;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #e0e0e0;
+    }
+
+    .carousel {
+      background-color: #F2EDE6;
+      text-align: center;
+      padding: 40px 10px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .about-section {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px;
+      text-align: left;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .about-section img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    .service-cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      gap: 20px;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .card {
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: #7C9B5A;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 30px 20px;
+      font-size: 14px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* 動畫效果 */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頁首 -->
+  <header>
+    <img src="logo.png" alt="logo">
+    <h1>名稱</h1>
+  </header>
+
+  <!-- 導覽列 -->
+  <nav>
+    <a href="#">會員登錄</a>
+    <a href="#">尋找領養</a>
+    <a href="#">寵物救助</a>
+    <a href="#">寵物商城</a>
+    <a href="#">其他服務</a>
+  </nav>
+
+  <!-- 廣告區 -->
+  <div class="carousel">
+    <h2>廣告輪播</h2>
+  </div>
+
+  <!-- 領養須知 -->
+  <section class="section">
+    <h2>🐾 領養須知</h2>
+    <p>這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字</p>
+  </section>
+
+  <!-- 關於我們 -->
+  <section class="about-section">
+    <img src="dog1.jpg" alt="關於我們圖片">
+    <div>
+      <h2>🐾 關於我們</h2>
+      <p>這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字這是文字</p>
+    </div>
+  </section>
+
+  <!-- 認養/商城/回報卡片 -->
+  <section class="service-cards">
+    <div class="card">
+      <img src="dog2.jpg" alt="認養服務">
+      <h3>認養服務</h3>
+      <p>這是文字這是文字這是文字這是文字這是文字這是文字</p>
+    </div>
+    <div class="card">
+      <img src="dog3.jpg" alt="商城">
+      <h3>商城</h3>
+      <p>這是文字這是文字這是文字這是文字這是文字</p>
+    </div>
+    <div class="card">
+      <img src="cat1.jpg" alt="收養回報">
+      <h3>收養回報</h3>
+      <p>這是文字這是文字這是文字這是文字這是文字</p>
+    </div>
+  </section>
+
+  <!-- 頁尾 -->
+  <footer>
+    <div>
+      <strong>快速連結</strong><br>
+      領養<br>
+      商城<br>
+      牠托還狗<br>
+      寵物救助
+    </div>
+    <div>
+      <strong>與我們聯繫</strong><br>
+      email: 122664@gmail.com<br>
+      地址：台中市公益路XXX號
+    </div>
+    <div>
+      <strong>免責聲明</strong><br>
+      本站所有資料來源為政府資料開放平台及會員自行刊登，<br>
+      本站對資訊內容無法實質審核查證。
+    </div>
+  </footer>
+
+</body>
+</html>
