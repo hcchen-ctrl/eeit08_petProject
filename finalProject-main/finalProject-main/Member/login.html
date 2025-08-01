@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wepet 寵物資訊平台</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <a class="navbar-brand" href="#">
+                <img src="./img/pet-icon.png" width="36" height="36" class="d-inline-block align-top" alt="logo">
+                寵物資訊平台
+            </a>
+
+            <!-- 手機切換按鈕 -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- 導覽列連結 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center w-100">
+
+                    <!-- 左側按鈕 -->
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link btn btn-login" href="#">尋找領養</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-login ml-lg-2" href="#">會員註冊</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-login ml-lg-2" href="#">會員登入</a></li>
+                    </ul>
+
+                    <!-- 中間選單 -->
+                    <ul class="navbar-nav mx-lg-auto text-center">
+                        <li class="nav-item"><a class="nav-link" href="#">關於我們</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">最新活動</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">領養須知</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">認養服務</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">寵物商城</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">收養回報</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br>
+          <br>
+            <br>
+              <br>
+              
+        <!-- 登入表單 -->
+        <div id="loginForm" class="auth-container fade-in">
+            <div class="auth-header">
+                <div class="pet-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2>會員登入</h2>
+                <p class="subtitle">歡迎回到 Wepet，讓我們一起幫助更多毛孩找到溫暖的家</p>
+            </div>
+            <div class="auth-body">
+                <form>
+                    <div class="form-group">
+                        <label for="loginEmail">
+                            <i class="fas fa-envelope"></i> 電子信箱
+                        </label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="請輸入您的電子信箱" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i> 密碼
+                        </label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="請輸入您的密碼" required>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">記住我的登入狀態</label>
+                    </div>
+                    <button type="submit" class="button-login">
+                        <i class="fas fa-sign-in-alt"></i> 登入
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>或使用以下方式登入</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="btn btn-google social-btn">
+                        <i class="fab fa-google"></i> 使用 Google 帳號登入
+                    </button>
+                    <button class="btn btn-facebook social-btn">
+                        <i class="fab fa-facebook-f"></i> 使用 Facebook 帳號登入
+                    </button>
+                </div>
+
+                <div class="switch-form">
+                    <p>還沒有帳號嗎？<a href="#" onclick="showRegister()" style="color: #d19f72;">立即註冊</a></p>
+                    <p><a href="#" onclick="showForgotPassword()" style="color: #d19f72;">忘記密碼？</a></p>
+                </div>
+            </div>
+        </div>
+
+           
+       
+    </div>
+
+    </body>
+
+</html>
